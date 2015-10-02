@@ -3,7 +3,7 @@
   "main": "./lib/git-log.js",
   "version": "0.4.1",
   "description": "This package graphs your git commits",
-  "repository": "https://github.com/nikhilkalige/git-log",
+  "repository": "https://github.com/dreki/git-log",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"

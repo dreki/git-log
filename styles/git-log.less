@@ -46,9 +46,9 @@
 
         p {
             position: relative;
-            overflow: hidden;
+            overflow: auto;
             text-overflow: ellipsis;
-            background: @syntax-background-color;
+            background: transparent;
 
             &:nth-child(odd) {
                 //background: rgba(0,0,0,0.3);
@@ -59,10 +59,15 @@
             }
 
             span {
-                overflow: hidden;
+                overflow: auto;
                 text-overflow: ellipsis;
                 display: block;
             }
+        }
+
+        .graph-cell,
+        .graph-cell p {
+          background-color: transparent;
         }
 
         .list, .list-head {
@@ -149,30 +154,6 @@
         flex: 1 0;
     }
 
-    /*.comments {
-        flex-basis: 70%;
-        p::before, p::after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            background: inherit;
-        }
-        p::after {
-            z-index: 4;
-            opacity: 0;
-        }
-    }
-
-    .commit, .date, .author {
-        flex-basis: 10%;
-    }
-
-    .commit p {
-        padding-left: @padding-bigger;
-    }
-*/
     .resize-handle {
         position: absolute;
         width: 10px;
@@ -200,6 +181,7 @@
 .git-log {
     table {
         table-layout: fixed;
+        z-index: 1;
     }
 
     table,tbody,th,td,tr {
@@ -208,9 +190,18 @@
         margin:0px;
     }
 
+    th {
+      // min-width: 100px;
+      overflow: hidden;  // for resize rule
+      resize: horizontal;
+    }
+
     td {
-        overflow: hidden;
+        overflow: auto;
         text-overflow: ellipsis;
+        max-width: 500px;
+        min-width: 100px;
+        background-color: rgba(255, 255, 255, 0.9);
     }
 
     table, thead {
@@ -223,6 +214,7 @@
         padding-top: 8px;
         padding-bottom: 8px;
         text-align: center;
+        // overflow: hidden;
     }
 
     .main {
